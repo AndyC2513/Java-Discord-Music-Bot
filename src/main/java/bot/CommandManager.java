@@ -1,4 +1,4 @@
-package commands;
+package bot;
 
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;

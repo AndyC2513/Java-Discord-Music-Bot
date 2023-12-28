@@ -1,4 +1,4 @@
-package listeners;
+package bot.listeners;
 
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

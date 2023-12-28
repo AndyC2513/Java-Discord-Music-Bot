@@ -1,6 +1,7 @@
-import commands.CommandManager;
+package bot;
+
 import io.github.cdimascio.dotenv.Dotenv;
-import listeners.EventListener;
+import bot.listeners.EventListener;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -24,7 +25,7 @@ public class DiscordBot {
 
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setActivity(Activity.playing("Testing"));
+        builder.setActivity(Activity.playing("Driving"));
         builder.enableIntents(GatewayIntent.GUILD_MEMBERS,
                 GatewayIntent.MESSAGE_CONTENT,
                 GatewayIntent.GUILD_PRESENCES,
