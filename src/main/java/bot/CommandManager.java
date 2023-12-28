@@ -11,11 +11,11 @@ import java.util.List;
 
 public class CommandManager extends ListenerAdapter {
 
-    private List<SCommand> commands = new ArrayList<>();
+    private List<SCommand> commandList = new ArrayList<>();
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        for(SCommand command : commands) {
+        for(SCommand command : commandList) {
             if(command.getName().equals(event.getName())) {
                 command.execute(event);
                 return;
@@ -26,7 +26,7 @@ public class CommandManager extends ListenerAdapter {
     @Override
     public void onGuildReady(GuildReadyEvent event) {
         for (Guild guild : event.getJDA().getGuilds()) {
-            for (SCommand command : commands) {
+            for (SCommand command : commandList) {
                 if (command.getOptions() == null) {
                     guild.upsertCommand(command.getName(), command.getDescription()).queue();
                 } else {
@@ -37,6 +37,6 @@ public class CommandManager extends ListenerAdapter {
     }
 
     public void add(SCommand command) {
-        commands.add(command);
+        commandList.add(command);
     }
 }
