@@ -4,6 +4,10 @@ import bot.commands.Count;
 import bot.commands.GiveRole;
 import bot.commands.Say;
 import bot.commands.Welcome;
+import bot.commands.music.Play;
+import bot.commands.music.Queue;
+import bot.commands.music.Skip;
+import bot.commands.music.Stop;
 import bot.listeners.EventListener;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -32,6 +36,10 @@ public class Main {
         commandManager.add(new Count());
         commandManager.add(new Say());
         commandManager.add(new GiveRole());
+        commandManager.add(new Play());
+        commandManager.add(new Skip());
+        commandManager.add(new Queue());
+        commandManager.add(new Stop());
 
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
