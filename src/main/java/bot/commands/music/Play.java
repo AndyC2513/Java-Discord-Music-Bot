@@ -62,6 +62,6 @@ public class Play implements SCommand {
 
         PlayerManager playerManager = PlayerManager.getInstance();
         playerManager.play(event.getGuild(), name);
-        event.reply("Playing Music!").queue();
+        event.reply("Playing Music").queue();
     }
 }
