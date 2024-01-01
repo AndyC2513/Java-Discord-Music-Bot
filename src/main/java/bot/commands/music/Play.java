@@ -21,7 +21,7 @@ public class Play implements SCommand {
 
     @Override
     public String getDescription() {
-        return "Will play a song given the URL";
+        return "Will play a song given the URL or name of song";
     }
 
     @Override

@@ -54,15 +54,24 @@ public class Queue implements SCommand {
         }
 
         GuildMusicManager guildMusicManager = PlayerManager.getInstance().getGuildMusicManager(event.getGuild());
+        AudioTrack currentTrack = guildMusicManager.getTrackScheduler().getPlayer().getPlayingTrack();
         List<AudioTrack> queue = new ArrayList<>(guildMusicManager.getTrackScheduler().getQueue());
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setTitle("Current Queue");
-        if(queue.isEmpty()) {
+        if(queue.isEmpty() && currentTrack == null) {
             embedBuilder.setDescription("Queue is empty");
         }
-        for(int i = 0; i < queue.size(); i++) {
-            AudioTrackInfo info = queue.get(i).getInfo();
-            embedBuilder.addField(i+1 + ":", info.title, false);
+        if (currentTrack != null) {
+            embedBuilder.addField("Now Playing :", currentTrack.getInfo().title,false);
+            for(int i = 0; i < queue.size(); i++) {
+                AudioTrackInfo info = queue.get(i).getInfo();
+                embedBuilder.addField(i+1 + ":", info.title, false);
+            }
+        } else {
+            for (int i = 0; i < queue.size(); i++) {
+                AudioTrackInfo info = queue.get(i).getInfo();
+                embedBuilder.addField(i + 1 + ":", info.title, false);
+            }
         }
         event.replyEmbeds(embedBuilder.build()).queue();
     }
